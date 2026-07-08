@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK Restaurant - Premium Grey & Gold Seafood Fine Dining</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGrey: {
+                            50: '#f6f6f7',
+                            100: '#e1e1e4',
+                            200: '#c5c5cb',
+                            300: '#9e9ea7',
+                            400: '#757581',
+                            500: '#5c5c68',
+                            600: '#484852',
+                            700: '#383840',
+                            800: '#26262b',
+                            900: '#19191d',
+                            950: '#0f0f12', /* Deep rich dark charcoal */
+                        },
+                        brandGold: {
+                            50: '#fbf7ec',
+                            100: '#f4e9cd',
+                            200: '#e9d39c',
+                            300: '#dab766',
+                            400: '#cb9c3c',
+                            500: '#b7842a', /* Premium Gold */
+                            600: '#9c6920',
+                            700: '#7d4e19',
+                            800: '#643e18',
+                            900: '#523317',
+                            950: '#2d1a0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons for Beautiful Visuals -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #19191d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b7842a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9c6920;
+        }
+        .text-gold-glow {
+            text-shadow: 0 0 15px rgba(183, 132, 42, 0.5);
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #b7842a, #2d1a0b) 1;
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-brandGrey-950 text-gray-100 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brandGrey-950/90 backdrop-blur-md border-b border-brandGold-500/20" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo with Gold and Grey -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="border-2 border-brandGold-500 text-brandGold-500 p-2.5 rounded-lg shadow-lg shadow-brandGold-500/20 group-hover:bg-brandGold-500 group-hover:text-brandGrey-950 transition-all duration-300">
+                    <i class="fa-solid fa-shrimp text-2xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-wider text-white group-hover:text-brandGold-400 transition duration-300">
+                        JK <span class="text-brandGold-500">RESTAURANT</span>
+                    </span>
+                    <span class="text-[9px] text-brandGold-300 tracking-[0.3em] uppercase font-semibold">The Luxury of Seafood</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-sm font-medium hover:text-brandGold-400 tracking-wide transition duration-300">Home</a>
+                <a href="#about" class="text-sm font-medium hover:text-brandGold-400 tracking-wide transition duration-300">Our Story</a>
+                <a href="#menu" class="text-sm font-medium hover:text-brandGold-400 tracking-wide transition duration-300">Ocean Treasures</a>
+                <a href="#gallery" class="text-sm font-medium hover:text-brandGold-400 tracking-wide transition duration-300">Gallery</a>
+                <a href="#testimonials" class="text-sm font-medium hover:text-brandGold-400 tracking-wide transition duration-300">Guest Reviews</a>
+            </nav>
+
+            <!-- CTA Actions & Gold Cart Trigger -->
+            <div class="hidden md:flex items-center space-x-5">
+                <button onclick="toggleCart()" class="relative p-2.5 text-brandGold-300 hover:text-brandGold-400 transition duration-300">
+                    <i class="fa-solid fa-basket-shopping text-xl"></i>
+                    <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-brandGold-500 text-brandGrey-950 text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full border border-brandGrey-950">0</span>
+                </button>
+                <a href="#booking" class="bg-gradient-to-r from-brandGold-600 to-brandGold-400 hover:from-brandGold-500 hover:to-brandGold-300 text-brandGrey-950 px-6 py-2.5 rounded-lg text-sm font-bold tracking-wider shadow-md shadow-brandGold-900/30 transform hover:-translate-y-0.5 transition duration-300">
+                    Book Royal Table
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button & Cart Trigger -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <button onclick="toggleCart()" class="relative p-2 text-brandGold-300 hover:text-brandGold-400">
+                    <i class="fa-solid fa-basket-shopping text-xl"></i>
+                    <span id="cartCountBadgeMobile" class="absolute -top-1 -right-1 bg-brandGold-500 text-brandGrey-950 text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="text-brandGold-300 hover:text-brandGold-400 focus:outline-none p-2" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div class="hidden md:hidden bg-brandGrey-950 border-b border-brandGold-500/20" id="mobileMenu">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brandGrey-900 hover:text-brandGold-400 transition">Home</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brandGrey-900 hover:text-brandGold-400 transition">Our Story</a>
+                <a href="#menu" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brandGrey-900 hover:text-brandGold-400 transition">Ocean Treasures</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brandGrey-900 hover:text-brandGold-400 transition">Gallery</a>
+                <a href="#testimonials" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-brandGrey-900 hover:text-brandGold-400 transition">Reviews</a>
+                <div class="pt-4 border-t border-brandGrey-900 flex flex-col space-y-3">
+                    <a href="#booking" onclick="toggleMobileMenu()" class="w-full text-center bg-brandGold-500 hover:bg-brandGold-400 text-brandGrey-950 py-3 rounded-lg text-sm font-semibold shadow-lg">
+                        Book Royal Table
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-brandGrey-950 overflow-hidden pt-20">
+        <!-- Background Overlay Image with rich dark coastal gold ambiance -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Luxury Seafood Feast" 
+                 class="w-full h-full object-cover object-center opacity-30 scale-105 animate-[pulse_8s_infinite_alternate]"
+                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/1c1c1e/b7842a?text=Premium+Seafood';">
+            <div class="absolute inset-0 bg-gradient-to-t from-brandGrey-950 via-brandGrey-950/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brandGrey-950 via-transparent to-brandGrey-950"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 lg:py-32">
+            <!-- Decorative Gold Seafood Icon Badge -->
+            <div class="inline-flex items-center space-x-2 bg-brandGold-950/40 border border-brandGold-500/30 px-4 py-2 rounded-full mb-6">
+                <i class="fa-solid fa-crown text-brandGold-400 text-xs animate-bounce"></i>
+                <span class="text-xs uppercase tracking-[0.2em] font-bold text-brandGold-200">The Finest Seafood Masterpieces</span>
+                <i class="fa-solid fa-crown text-brandGold-400 text-xs animate-bounce"></i>
+            </div>
+
+            <!-- Big Main Headline -->
+            <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-none">
+                Savor the Royalty of <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGold-300 via-brandGold-500 to-yellow-200 text-gold-glow">
+                    The Sea Delicacies
+                </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-brandGrey-300 font-light mb-10 leading-relaxed">
+                Welcome to <strong class="text-white font-medium">JK Restaurant</strong>, where fresh ocean catches meet gold-standard culinary craftsmanship. Dive into the royal taste experience tailored for true connoisseurs.
+            </p>
+
+            <!-- Dynamic Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-gradient-to-r from-brandGold-600 to-brandGold-400 hover:from-brandGold-500 hover:to-brandGold-300 text-brandGrey-950 px-8 py-4 rounded-xl text-base font-bold tracking-wide shadow-xl shadow-brandGold-900/40 transform hover:-translate-y-1 transition duration-300 flex items-center justify-center">
+                    <i class="fa-solid fa-utensils mr-2"></i> Explore Sea Treasures
+                </a>
+                <a href="#booking" class="w-full sm:w-auto bg-brandGrey-900/80 hover:bg-brandGrey-800 border border-brandGold-500/30 hover:border-brandGold-400 text-brandGold-400 px-8 py-4 rounded-xl text-base font-semibold tracking-wide backdrop-blur-sm transform hover:-translate-y-1 transition duration-300 flex items-center justify-center">
+                    <i class="fa-solid fa-calendar-check mr-2"></i> Reserve Private Table
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
+                <span class="text-xs text-brandGold-400 tracking-widest uppercase mb-2">Scroll Down</span>
+                <i class="fa-solid fa-chevron-down text-brandGold-500 text-lg"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Story Section -->
+    <section id="about" class="py-24 bg-brandGrey-950 border-t border-brandGold-500/10 relative overflow-hidden">
+        <div class="absolute -right-64 -top-64 w-96 h-96 bg-brandGold-950/10 rounded-full blur-3xl"></div>
+        <div class="absolute -left-64 -bottom-64 w-96 h-96 bg-brandGrey-800/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left side: Artistic Seafood Collage with Gold Accent Border -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-full h-full border border-brandGold-500 rounded-2xl z-0"></div>
+                        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=800&q=80" 
+                             alt="Luxury Seafood Dish Gold Theme" 
+                             class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[350px] sm:h-[450px]"
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x1000/19191d/b7842a?text=JK+Signature+Lobster';">
+                    </div>
+                </div>
+
+                <!-- Right side: Content with visual gold markers -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block border-l-4 border-brandGold-500 pl-4">
+                        <span class="text-xs uppercase tracking-[0.2em] font-bold text-brandGold-400">Established 1998</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-1">Our Coastal Legacy of Gold</h2>
+                    </div>
+
+                    <p class="text-brandGrey-300 text-base sm:text-lg leading-relaxed font-light">
+                        At <strong class="text-white">JK Restaurant</strong>, we bring you the ocean on a gold-rimmed platter. Born from a profound admiration for maritime cooking secrets, we dedicate ourselves to delivering premium sea ingredients flamed under elite chef guidance.
+                    </p>
+
+                    <p class="text-brandGrey-400 text-sm sm:text-base leading-relaxed">
+                        Whether it’s our local premium delicacy, the iconic <em class="text-brandGold-400 font-serif">Signature Karimeen Pollichathu (Pearl Spot)</em>, or luxurious garlic butter lobsters and grand deep-sea golden crab pots, every raw catch is directly curated from premium coastlines at dawn.
+                    </p>
+
+                    <!-- Gold Stat Counters -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brandGrey-900">
+                        <div class="text-center p-4 bg-brandGrey-900/50 rounded-xl border border-brandGold-500/20">
+                            <span class="block text-2xl sm:text-3xl font-bold text-brandGold-400 font-serif">100%</span>
+                            <span class="text-[9px] sm:text-[10px] text-brandGrey-400 uppercase tracking-wider font-semibold">Premium Fresh</span>
+                        </div>
+                        <div class="text-center p-4 bg-brandGrey-900/50 rounded-xl border border-brandGold-500/20">
+                            <span class="block text-2xl sm:text-3xl font-bold text-brandGold-400 font-serif">30+</span>
+                            <span class="text-[9px] sm:text-[10px] text-brandGrey-400 uppercase tracking-wider font-semibold">Golden Recipes</span>
+                        </div>
+                        <div class="text-center p-4 bg-brandGrey-900/50 rounded-xl border border-brandGold-500/20">
+                            <span class="block text-2xl sm:text-3xl font-bold text-brandGold-400 font-serif">20k+</span>
+                            <span class="text-[9px] sm:text-[10px] text-brandGrey-400 uppercase tracking-wider font-semibold">Elite Guests</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Seafood Menu Section -->
+    <section id="menu" class="py-24 bg-brandGrey-900/40 border-t border-brandGold-500/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <i class="fa-solid fa-fish text-brandGold-500 text-3xl mb-4"></i>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">The Captain’s Golden Treasures</h2>
+                <p class="text-brandGrey-400 font-light">
+                    Sensational marine delicacies seasoned with royal gold dust spices, prepared fresh by culinary artists.
+                </p>
+                
+                <!-- Category Filter Buttons in Gold Theme -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="menuFilters">
+                    <button onclick="filterMenu('all')" class="menu-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition bg-brandGold-500 text-brandGrey-950" data-category="all">
+                        All Treasures
+                    </button>
+                    <button onclick="filterMenu('starters')" class="menu-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition bg-brandGrey-900 text-brandGrey-300 hover:bg-brandGrey-800" data-category="starters">
+                        Starters
+                    </button>
+                    <button onclick="filterMenu('mains')" class="menu-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition bg-brandGrey-900 text-brandGrey-300 hover:bg-brandGrey-800" data-category="mains">
+                        Imperial Mains
+                    </button>
+                    <button onclick="filterMenu('specials')" class="menu-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition bg-brandGrey-900 text-brandGrey-300 hover:bg-brandGrey-800" data-category="specials">
+                        JK Chef Signatures
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+                <!-- Dynamically generated through Javascript below -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Table Booking Section -->
+    <section id="booking" class="py-24 bg-brandGrey-950 border-t border-brandGold-500/10 relative">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1559742811-824132a5cbe0?auto=format&fit=crop&w=1920&q=80" 
+                 alt="VIP Table Booking" 
+                 class="w-full h-full object-cover object-center opacity-10"
+                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/19191d/b7842a?text=VIP+Dining';">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brandGrey-900/95 border-2 border-brandGold-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-md">
+                
+                <div class="text-center max-w-lg mx-auto mb-10">
+                    <i class="fa-solid fa-champagne-glasses text-brandGold-500 text-3xl mb-4"></i>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">Reserve Your Golden Table</h2>
+                    <p class="text-brandGrey-400 text-sm">Experience private dining, candles, and coastal music with your loved ones.</p>
+                </div>
+
+                <form id="reservationForm" onsubmit="handleReservation(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Guest Full Name</label>
+                            <input type="text" id="reserveName" required placeholder="eg: Jacob Kurien" 
+                                   class="w-full bg-brandGrey-950 border border-brandGrey-800 focus:border-brandGold-500 focus:ring-1 focus:ring-brandGold-500 text-white rounded-xl px-4 py-3.5 outline-none transition">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Contact Number</label>
+                            <input type="tel" id="reservePhone" required placeholder="eg: +91 94950 00000" 
+                                   class="w-full bg-brandGrey-950 border border-brandGrey-800 focus:border-brandGold-500 focus:ring-1 focus:ring-brandGold-500 text-white rounded-xl px-4 py-3.5 outline-none transition">
+                        </div>
+
+                        <!-- Guests Number -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Total Guests Count</label>
+                            <select id="reserveGuests" required class="w-full bg-brandGrey-950 border border-brandGrey-800 focus:border-brandGold-500 focus:ring-1 focus:ring-brandGold-500 text-white rounded-xl px-4 py-3.5 outline-none transition">
+                                <option value="2">2 Guests (Couple Special)</option>
+                                <option value="4" selected>4 Guests (Family Table)</option>
+                                <option value="6">6 Guests</option>
+                                <option value="10">8-12 Guests (Royal Gathering)</option>
+                            </select>
+                        </div>
+
+                        <!-- Date -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Preferred Date</label>
+                            <input type="date" id="reserveDate" required 
+                                   class="w-full bg-brandGrey-950 border border-brandGrey-800 focus:border-brandGold-500 focus:ring-1 focus:ring-brandGold-500 text-white rounded-xl px-4 py-3.5 outline-none transition">
+                        </div>
+
+                        <!-- Time Slot -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Preferred Session / Time Slot</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <label class="border border-brandGrey-800 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-brandGold-500 transition bg-brandGrey-950">
+                                    <input type="radio" name="reserveTime" value="Golden Lunch (12:30 PM)" checked class="sr-only peer">
+                                    <span class="text-xs font-semibold text-brandGrey-300 peer-checked:text-brandGold-400">Royal Lunch</span>
+                                    <span class="text-[10px] text-brandGrey-500 mt-1">12:30 PM</span>
+                                </label>
+                                <label class="border border-brandGrey-800 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-brandGold-500 transition bg-brandGrey-950">
+                                    <input type="radio" name="reserveTime" value="High Tea (4:30 PM)" class="sr-only peer">
+                                    <span class="text-xs font-semibold text-brandGrey-300 peer-checked:text-brandGold-400">Sun Tea</span>
+                                    <span class="text-[10px] text-brandGrey-500 mt-1">4:30 PM</span>
+                                </label>
+                                <label class="border border-brandGrey-800 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-brandGold-500 transition bg-brandGrey-950">
+                                    <input type="radio" name="reserveTime" value="Sunset Dinner (7:00 PM)" class="sr-only peer">
+                                    <span class="text-xs font-semibold text-brandGrey-300 peer-checked:text-brandGold-400">Sunset Dinner</span>
+                                    <span class="text-[10px] text-brandGrey-500 mt-1">7:00 PM</span>
+                                </label>
+                                <label class="border border-brandGrey-800 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-brandGold-500 transition bg-brandGrey-950">
+                                    <input type="radio" name="reserveTime" value="Royal Late Dinner (9:30 PM)" class="sr-only peer">
+                                    <span class="text-xs font-semibold text-brandGrey-300 peer-checked:text-brandGold-400">Midnight VIP</span>
+                                    <span class="text-[10px] text-brandGrey-500 mt-1">9:30 PM</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Special Request notes -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-brandGold-400 mb-2">Special Requests / Occasion Note</label>
+                            <textarea id="reserveNote" rows="2" placeholder="Birthday celebration settings, candlelight arrangement, extra-spicy karimeen, etc." 
+                                      class="w-full bg-brandGrey-950 border border-brandGrey-800 focus:border-brandGold-500 focus:ring-1 focus:ring-brandGold-500 text-white rounded-xl px-4 py-3 outline-none transition resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-brandGold-600 via-brandGold-500 to-brandGold-400 hover:from-brandGold-500 hover:to-brandGold-300 text-brandGrey-950 font-bold py-4 rounded-xl shadow-lg shadow-brandGold-900/40 transform hover:-translate-y-0.5 transition duration-300 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                        <span>Secure Private Booking</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section id="gallery" class="py-24 bg-brandGrey-900/40 border-t border-brandGold-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <i class="fa-solid fa-camera-retro text-brandGold-500 text-3xl mb-4"></i>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">Glimpse of Royal Dining</h2>
+                <p class="text-brandGrey-400 text-sm">Feast your eyes with the rich visual textures of our ocean delicacies and majestic lounge environment.</p>
+            </div>
+
+            <!-- Beautiful dynamic image display grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Card 1 -->
+                <div class="relative group overflow-hidden rounded-2xl h-80 border-2 border-brandGold-500/10 hover:border-brandGold-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" 
+                         alt="Perfect Grilled Salmon" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/1c1c1e/b7842a?text=Grilled+Fish';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brandGold-400 font-bold text-xs uppercase tracking-wider">Flaved Grill</span>
+                        <h4 class="text-white text-lg font-serif font-bold">Gold Crust Salmon</h4>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="relative group overflow-hidden rounded-2xl h-80 border-2 border-brandGold-500/10 hover:border-brandGold-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=80" 
+                         alt="Fresh Steamed Mud Crab" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/1c1c1e/b7842a?text=Steamed+Crab';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brandGold-400 font-bold text-xs uppercase tracking-wider">Coastal Hot</span>
+                        <h4 class="text-white text-lg font-serif font-bold">Fiery Mud Crab Roast</h4>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative group overflow-hidden rounded-2xl h-80 border-2 border-brandGold-500/10 hover:border-brandGold-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80" 
+                         alt="King Prawn Platter" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/1c1c1e/b7842a?text=King+Prawns';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brandGold-400 font-bold text-xs uppercase tracking-wider">Royal Combo</span>
+                        <h4 class="text-white text-lg font-serif font-bold">Elite Prawns Platter</h4>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="relative group overflow-hidden rounded-2xl h-80 border-2 border-brandGold-500/10 hover:border-brandGold-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" 
+                         alt="Ocean Lobster Feast" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/1c1c1e/b7842a?text=Lobster+Platter';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brandGold-400 font-bold text-xs uppercase tracking-wider">Premium Feast</span>
+                        <h4 class="text-white text-lg font-serif font-bold">The Golden Lobster Pot</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Customer Reviews Section -->
+    <section id="testimonials" class="py-24 bg-brandGrey-950 border-t border-brandGold-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <i class="fa-solid fa-quote-right text-brandGold-500 text-3xl mb-4"></i>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">Voices of Happy Guests</h2>
+                <p class="text-brandGrey-400 text-sm">Discover what our guests write about our luxurious atmosphere and mouthwatering cuisines.</p>
+            </div>
+
+            <!-- Dynamic reviews masonry card grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-brandGrey-900 border border-brandGold-500/10 hover:border-brandGold-500/30 transition-all duration-300 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-brandGold-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "The Karimeen Pollichathu here is absolutely premium! Baked inside a real banana leaf, the spice blend was incredibly authentic with a smoky flavor. The gold and grey decor creates a royal atmosphere. Five stars!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brandGrey-800/50">
+                        <div class="bg-brandGrey-800 w-10 h-10 rounded-full flex items-center justify-center font-bold text-brandGold-500">M</div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Mathew George</h4>
+                            <span class="text-xs text-brandGrey-500">Kochi, India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-brandGrey-900 border border-brandGold-500/10 hover:border-brandGold-500/30 transition-all duration-300 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-brandGold-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "Absolutely stunning. The dining setup feels like an emperor's hall. The Golden Crab Pot was juicy, loaded with garlic-butter, and extremely fresh. It's truly a must-visit place for seafood lovers!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brandGrey-800/50">
+                        <div class="bg-brandGrey-800 w-10 h-10 rounded-full flex items-center justify-center font-bold text-brandGold-500">A</div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Aishwarya Nair</h4>
+                            <span class="text-xs text-brandGrey-500">Food Critic & Blogger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-brandGrey-900 border border-brandGold-500/10 hover:border-brandGold-500/30 transition-all duration-300 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-brandGold-500 space-x-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "Excellent hospitality. The booking system worked smoothly without waiting. Tried the Malabar Mango Prawn Curry paired with traditional red rice. Highly flavorful and nicely presented!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-brandGrey-800/50">
+                        <div class="bg-brandGrey-800 w-10 h-10 rounded-full flex items-center justify-center font-bold text-brandGold-500">R</div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Rohan Kurian</h4>
+                            <span class="text-xs text-brandGrey-500">Local Guide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-over interactive Shopping Cart -->
+    <div id="shoppingCartPanel" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition duration-500 ease-in-out">
+        <div class="w-screen max-w-md bg-brandGrey-900 border-l border-brandGold-500/30 flex flex-col shadow-2xl">
+            
+            <!-- Cart Header -->
+            <div class="p-6 bg-brandGrey-950 border-b border-brandGrey-800 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping text-brandGold-500 text-xl"></i>
+                    <h3 class="font-serif text-xl font-bold text-white">Your Feast Cart</h3>
+                </div>
+                <button onclick="toggleCart()" class="text-brandGrey-400 hover:text-brandGold-500 p-1.5 focus:outline-none">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items container -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsList">
+                <!-- Fallback Empty State -->
+                <div class="h-full flex flex-col items-center justify-center text-center text-brandGrey-400 py-12" id="emptyCartMessage">
+                    <i class="fa-solid fa-shrimp text-brandGold-500 text-5xl mb-4 opacity-50"></i>
+                    <p class="font-serif text-lg font-semibold text-white">Your cart is empty!</p>
+                    <p class="text-xs text-brandGrey-500 max-w-xs mt-1">Select from our Captain's golden treasures to begin your royal feast.</p>
+                </div>
+            </div>
+
+            <!-- Cart Total & Action Footer -->
+            <div class="p-6 bg-brandGrey-950 border-t border-brandGrey-800 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-brandGrey-300">Imperial Subtotal:</span>
+                    <span id="cartSubtotal" class="text-xl font-bold text-brandGold-500 font-serif">₹0.00</span>
+                </div>
+                <p class="text-[10px] text-brandGrey-500">Taxes, luxury lounge service charges, and packing options are computed at final invoice.</p>
+                <button onclick="handleCheckout()" id="checkoutBtn" disabled class="w-full bg-brandGrey-800 cursor-not-allowed text-brandGrey-400 font-bold py-4 rounded-xl text-center transition duration-300 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Checkout Your Feast</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backdrop for Cart and Modal overlay click protection -->
+    <div id="modalBackdrop" onclick="closeAllPanels()" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-40 hidden transition-all duration-300"></div>
+
+    <!-- Reservation Successful / Toast Modal -->
+    <div id="successModal" class="fixed inset-0 flex items-center justify-center z-50 hidden px-4">
+        <div class="bg-brandGrey-900 border-2 border-brandGold-500/50 max-w-md w-full rounded-2xl p-8 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-brandGold-950/50 border border-brandGold-500 text-brandGold-500 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fa-solid fa-circle-check animate-pulse"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-white mb-2" id="modalTitle">Table Secured!</h3>
+            <p class="text-brandGrey-300 text-sm mb-6 animate-fade-in" id="modalMessage">Your booking has been registered.</p>
+            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-brandGold-600 to-brandGold-400 text-brandGrey-950 font-bold py-3 rounded-xl transition hover:from-brandGold-500 hover:to-brandGold-300">
+                Acknowledge with Honor
+            </button>
+        </div>
+    </div>
+
+    <!-- Premium Footer Section -->
+    <footer class="bg-brandGrey-950 border-t-2 border-brandGold-500/20 py-16 text-brandGrey-400 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                
+                <!-- Footer Column 1: Brand details -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="border border-brandGold-500 text-brandGold-500 p-2 rounded">
+                            <i class="fa-solid fa-shrimp text-lg"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-wider text-white">JK SEAFOODS</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-brandGrey-400">
+                        Crafting coastal experiences on majestic grey and golden platters with absolute loyalty, fresh catch, and regional spices.
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-9 h-9 border border-brandGold-500/20 hover:border-brandGold-500 hover:text-brandGold-500 text-white rounded-lg flex items-center justify-center transition duration-300">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 border border-brandGold-500/20 hover:border-brandGold-500 hover:text-brandGold-500 text-white rounded-lg flex items-center justify-center transition duration-300">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 border border-brandGold-500/20 hover:border-brandGold-500 hover:text-brandGold-500 text-white rounded-lg flex items-center justify-center transition duration-300">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Column 2: Working Hours -->
+                <div class="space-y-4">
+                    <h4 class="font-serif text-white font-bold text-base tracking-wider uppercase border-b border-brandGold-500/20 pb-2">Hours of Feast</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex justify-between">
+                            <span>Mon - Fri:</span>
+                            <span class="text-white font-semibold">12:00 PM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sat - Sun:</span>
+                            <span class="text-brandGold-500 font-semibold">11:30 AM - 11:30 PM</span>
+                        </li>
+                        <li class="flex justify-between pt-2 border-t border-brandGrey-900/50 text-[11px] text-brandGrey-500">
+                            <span>* Kitchen closes 30 mins prior to close time.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer Column 3: Contact & Location -->
+                <div class="space-y-4">
+                    <h4 class="font-serif text-white font-bold text-base tracking-wider uppercase border-b border-brandGold-500/20 pb-2">JK Seafood Lounge</h4>
+                    <p class="text-sm leading-relaxed">
+                        Royal Marine Coastal Plaza, Near Lighthouse Beach,<br>
+                        Kochi, Kerala, PIN - 682001
+                    </p>
+                    <p class="text-sm">
+                        <span class="font-semibold text-white">Call:</span> +91 94950 00000 <br>
+                        <span class="font-semibold text-white">Email:</span> royal@jkseafood.com
+                    </p>
+                </div>
+
+                <!-- Footer Column 4: Quick Newsletter -->
+                <div class="space-y-4">
+                    <h4 class="font-serif text-white font-bold text-base tracking-wider uppercase border-b border-brandGold-500/20 pb-2">Imperial Offers</h4>
+                    <p class="text-xs text-brandGrey-400">Get weekend fresh catch updates & exclusive VIP booking discount coupons.</p>
+                    <div class="flex flex-col space-y-2">
+                        <input type="email" id="newsletterEmail" placeholder="yourname@gmail.com" 
+                               class="w-full bg-brandGrey-900 border border-brandGold-500/20 text-white rounded-lg px-3 py-2 text-xs outline-none focus:border-brandGold-500">
+                        <button onclick="handleNewsletterSubmit()" class="w-full bg-gradient-to-r from-brandGold-600 to-brandGold-400 text-brandGrey-950 font-bold py-2 rounded-lg text-xs tracking-wider transition hover:from-brandGold-500 hover:to-brandGold-300">
+                            ACQUIRE COUPON
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-brandGrey-900 text-center text-xs text-brandGrey-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 JK Seafood Restaurant. Crafted in Gold. All Rights Reserved.</p>
+                <p class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-brandGold-400">Privacy Policy</a>
+                    <span>&bull;</span>
+                    <a href="#" class="hover:text-brandGold-400">Dining Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global Array for premium grey and gold themed menu items
+        const MENU_ITEMS = [
+            {
+                id: "item1",
+                name: "JK Royal Karimeen Pollichathu (Pearl Spot)",
+                category: "specials",
+                price: 520,
+                description: "JK legendary pearl spot marinated with elite coastal spices, wrapped in tender banana leaves and slow charcoal-baked for royal delicacy.",
+                rating: 5,
+                tag: "Imperial Bestseller",
+                image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "item2",
+                name: "Golden Garlic Butter Mud Crab",
+                category: "specials",
+                price: 1390,
+                description: "Massive coastal deep-sea mud crabs simmered inside premium dairy butter, minced garlic, roasted curry leaves, and rich black pepper.",
+                rating: 5,
+                tag: "Signature Royal",
+                image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "item3",
+                name: "Golden Fried Crunchy Calamari Rings",
+                category: "starters",
+                price: 340,
+                description: "Premium squid rings dusted in golden-baked crispy crumbs and spicy hot pepper mix. Served with citrus-infused golden mayo dip.",
+                rating: 4,
+                tag: "Crunchy Crispy",
+                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "item4",
+                name: "Golden Tandoori Grilled Lobster",
+                category: "starters",
+                price: 1690,
+                description: "Atlantic whole rock lobster bathed inside authentic red-golden tandoori marinades, skewered and clay-baked with charcoal smoke.",
+                rating: 5,
+                tag: "Grand Luxury",
+                image: "https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "item5",
+                name: "Malabar Mango Prawn Curry with Rice",
+                category: "mains",
+                price: 490,
+                description: "Giant fresh tiger prawns prepared in a rich golden coconut-milk gravy with hand-plucked green mangoes and curry leaves.",
+                rating: 4,
+                tag: "Malabar Pride",
+                image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: "item6",
+                name: "The Emperor Golden Seafood Platter",
+                category: "specials",
+                price: 2690,
+                description: "An absolute master-feast for kings! Whole grilled rock lobster, Karimeen, fiery tandoori prawns, calamari rings, and rich butter crab.",
+                rating: 5,
+                tag: "Imperial Feast",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+
+        let cart = [];
+
+        // Function to render items inside the menu grid depending on filters
+        function renderMenu(itemsToRender) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+
+            itemsToRender.forEach(item => {
+                const starsHTML = Array.from({length: item.rating}, () => `<i class="fa-solid fa-star text-brandGold-500"></i>`).join('');
+                
+                // Construct beautiful responsive card markup in grey and gold
+                const cardHTML = `
+                    <div class="bg-brandGrey-900 border border-brandGold-500/10 rounded-2xl overflow-hidden group hover:border-brandGold-500/50 transition duration-300 flex flex-col justify-between">
+                        
+                        <!-- Top visual container -->
+                        <div class="relative overflow-hidden h-52">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/19191d/b7842a?text=Seafood+Dish';">
+                            <span class="absolute top-4 left-4 bg-gradient-to-r from-brandGold-600 to-brandGold-400 text-brandGrey-950 text-[10px] font-extrabold tracking-wider uppercase px-3 py-1 rounded-full shadow-lg">${item.tag}</span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-1">
+                                    ${starsHTML}
+                                </div>
+                                <h3 class="font-serif text-lg font-bold text-white group-hover:text-brandGold-400 transition">${item.name}</h3>
+                                <p class="text-brandGrey-400 text-xs sm:text-sm line-clamp-3">${item.description}</p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-brandGrey-800/80 flex items-center justify-between">
+                                <span class="font-serif text-xl font-bold text-brandGold-400">₹${item.price}</span>
+                                <button onclick="addToCart('${item.id}')" class="bg-brandGrey-950 hover:bg-brandGold-500 border border-brandGold-500/50 text-brandGold-400 hover:text-brandGrey-950 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition flex items-center space-x-2">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>Add to Cart</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
+
+        function filterMenu(category) {
+            // Adjust Active Filter button states styles
+            const buttons = document.querySelectorAll('.menu-filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.remove('bg-brandGrey-900', 'text-brandGrey-300', 'hover:bg-brandGrey-800');
+                    btn.classList.add('bg-brandGold-500', 'text-brandGrey-950');
+                } else {
+                    btn.classList.add('bg-brandGrey-900', 'text-brandGrey-300', 'hover:bg-brandGrey-800');
+                    btn.classList.remove('bg-brandGold-500', 'text-brandGrey-950');
+                }
+            });
+
+            // Filter actual data array
+            if (category === 'all') {
+                renderMenu(MENU_ITEMS);
+            } else {
+                const filtered = MENU_ITEMS.filter(item => item.category === category);
+                renderMenu(filtered);
+            }
+        }
+
+        function toggleCart() {
+            const panel = document.getElementById('shoppingCartPanel');
+            const backdrop = document.getElementById('modalBackdrop');
+            if (panel.classList.contains('translate-x-full')) {
+                panel.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                panel.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function closeAllPanels() {
+            document.getElementById('shoppingCartPanel').classList.add('translate-x-full');
+            document.getElementById('modalBackdrop').classList.add('hidden');
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        function addToCart(itemId) {
+            const item = MENU_ITEMS.find(m => m.id === itemId);
+            if (!item) return;
+
+            // Check if item exists in the cart array
+            const existingCartItem = cart.find(c => c.id === itemId);
+            if (existingCartItem) {
+                existingCartItem.quantity += 1;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+
+            updateCartUI();
+            
+            // Pop open checkout panel automatically for absolute premium feeling!
+            toggleCart();
+        }
+
+        function removeFromCart(itemId) {
+            const cartIndex = cart.findIndex(c => c.id === itemId);
+            if (cartIndex > -1) {
+                if (cart[cartIndex].quantity > 1) {
+                    cart[cartIndex].quantity -= 1;
+                } else {
+                    cart.splice(cartIndex, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countBadge = document.getElementById('cartCountBadge');
+            const countBadgeMobile = document.getElementById('cartCountBadgeMobile');
+            const listContainer = document.getElementById('cartItemsList');
+            const subtotalText = document.getElementById('cartSubtotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const emptyMessage = document.getElementById('emptyCartMessage');
+
+            // Find total count
+            const totalCount = cart.reduce((acc, current) => acc + current.quantity, 0);
+            countBadge.innerText = totalCount;
+            countBadgeMobile.innerText = totalCount;
+
+            // Empty state check
+            if (cart.length === 0) {
+                emptyMessage.style.display = 'flex';
+                // Remove existing items and only show empty state
+                const children = Array.from(listContainer.children);
+                children.forEach(child => {
+                    if (child.id !== 'emptyCartMessage') child.remove();
+                });
+                subtotalText.innerText = '₹0.00';
+                checkoutBtn.disabled = true;
+                checkoutBtn.className = "w-full bg-brandGrey-800 cursor-not-allowed text-brandGrey-400 font-bold py-4 rounded-xl text-center transition duration-300 flex items-center justify-center space-x-2";
+                return;
+            }
+
+            // Hide empty msg
+            emptyMessage.style.display = 'none';
+
+            // Clear old item list entries except the empty message container
+            const currentItemDivs = listContainer.querySelectorAll('.cart-rendered-item');
+            currentItemDivs.forEach(div => div.remove());
+
+            let subtotal = 0;
+
+            // Render current cart items inside drawer
+            cart.forEach(item => {
+                subtotal += (item.price * item.quantity);
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "cart-rendered-item bg-brandGrey-950 p-4 rounded-xl border border-brandGold-500/10 flex items-center justify-between space-x-4";
+                itemDiv.innerHTML = `
+                    <div class="flex-1">
+                        <h4 class="text-white text-xs sm:text-sm font-semibold truncate max-w-[180px]">${item.name}</h4>
+                        <span class="text-xs text-brandGold-400 font-medium font-serif mt-1 block">₹${item.price} &times; ${item.quantity}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="removeFromCart('${item.id}')" class="bg-brandGrey-900 text-brandGold-400 hover:text-brandGold-300 w-7 h-7 flex items-center justify-center rounded border border-brandGold-500/20">
+                            <i class="fa-solid fa-minus text-xs"></i>
+                        </button>
+                        <span class="text-sm font-bold text-white w-4 text-center">${item.quantity}</span>
+                        <button onclick="addToCart('${item.id}')" class="bg-brandGrey-900 text-brandGold-400 hover:text-brandGold-300 w-7 h-7 flex items-center justify-center rounded border border-brandGold-500/20">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                listContainer.appendChild(itemDiv);
+            });
+
+            subtotalText.innerText = `₹${subtotal}.00`;
+            checkoutBtn.disabled = false;
+            checkoutBtn.className = "w-full bg-gradient-to-r from-brandGold-600 to-brandGold-400 hover:from-brandGold-500 hover:to-brandGold-300 text-brandGrey-950 font-bold py-4 rounded-xl text-center transition duration-300 flex items-center justify-center space-x-2 cursor-pointer shadow-lg shadow-brandGold-900/40";
+        }
+
+        function handleReservation(event) {
+            event.preventDefault();
+            const name = document.getElementById('reserveName').value;
+            const date = document.getElementById('reserveDate').value;
+            const guests = document.getElementById('reserveGuests').value;
+            const timeslot = document.querySelector('input[name="reserveTime"]:checked').value;
+
+            // Trigger beautiful gold modal instead of standard annoying alert()
+            showModal(
+                "Royal Table Secured!", 
+                `Greetings Lord/Lady, your table booking for <strong>${guests} people</strong> has been secured on <strong>${date}</strong> during <strong>${timeslot}</strong> under the registry name of <strong>${name}</strong>.`
+            );
+
+            // Reset form
+            document.getElementById('reservationForm').reset();
+        }
+
+        function handleCheckout() {
+            // Close Cart panel
+            toggleCart();
+
+            // Clear Cart and update
+            const oldTotal = cart.reduce((acc, current) => acc + (current.price * current.quantity), 0);
+            cart = [];
+            updateCartUI();
+
+            // Show custom gold themed success modal
+            showModal(
+                "Feast Order Dispatched!",
+                `Awesome! Your order worth <strong>₹${oldTotal}.00</strong> has been successfully registered. Our grand chefs are prepping the woodfire smoke for your seafood!`
+            );
+        }
+
+        function handleNewsletterSubmit() {
+            const emailInput = document.getElementById('newsletterEmail');
+            if(!emailInput.value) return;
+            
+            showModal(
+                "15% VIP Coupon Activated!",
+                `Congratulations! ${emailInput.value} has been added to our royal guest catalog. Use promo code <strong>JKGOLD15</strong> for your next dining experience!`
+            );
+            emailInput.value = '';
+        }
+
+        function showModal(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerHTML = message;
+            
+            const modal = document.getElementById('successModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            
+            modal.classList.remove('hidden');
+            backdrop.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('modalBackdrop').classList.add('hidden');
+        }
+
+        // On window scroll, add gold glass border shading to header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if(window.scrollY > 50) {
+                header.classList.add('bg-brandGrey-950', 'shadow-2xl', 'border-brandGold-500/40');
+                header.classList.remove('bg-brandGrey-950/90');
+            } else {
+                header.classList.remove('bg-brandGrey-950', 'shadow-2xl', 'border-brandGold-500/40');
+                header.classList.add('bg-brandGrey-950/90');
+            }
+        });
+
+        // Initialize web layout
+        window.onload = function() {
+            renderMenu(MENU_ITEMS);
+            
+            // Set default reservation date picker to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('reserveDate').value = tomorrow.toISOString().split('T')[0];
+        }
+    </script>
+</body>
+</html>
